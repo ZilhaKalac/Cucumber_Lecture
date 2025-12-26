@@ -27,7 +27,7 @@ public class BasePage {
         wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
-    public void clickElement (final WebElement element) {
+    public void clickElement(final WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
         try {
             element.click();
@@ -45,13 +45,13 @@ public class BasePage {
         }
     }
 
-    public void sendKeysToElement(final WebElement element, final String text){
+    public void sendKeysToElement(final WebElement element, final String text) {
         wait.until(ExpectedConditions.visibilityOf(element));
         try {
             element.clear();
             element.sendKeys(text);
             LOGGER.debug("Text sent to element");
-        } catch (Exception e1){
+        } catch (Exception e1) {
             try {
                 new Actions(driver)
                         .moveToElement(element)
@@ -60,12 +60,12 @@ public class BasePage {
                         .build()
                         .perform();
                 LOGGER.debug("Text sent to element with Actions");
-            }catch (Exception e2) {
+            } catch (Exception e2) {
                 try {
-                    ((JavascriptExecutor)driver)
+                    ((JavascriptExecutor) driver)
                             .executeScript("arguments[0].value = arguments[1];", element, text);
                     LOGGER.debug("Text sent to element with Javascript");
-                }catch (Exception e3){
+                } catch (Exception e3) {
                     throw new RuntimeException("None of the sendkeys operations worked");
                 }
             }
@@ -73,6 +73,7 @@ public class BasePage {
     }
 
     public void verifyDisplayed(final WebElement element, final String text) {
+        wait.until(ExpectedConditions.visibilityOf(element));
         Assert.assertTrue(element.isDisplayed(), text);
     }
 }
