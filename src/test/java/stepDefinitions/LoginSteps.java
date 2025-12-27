@@ -2,6 +2,7 @@ package stepDefinitions;
 
 
 import hooks.Hooks;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -36,5 +37,16 @@ public class LoginSteps {
     @Then("Home page opened")
     public void homePageOpened() {
         homePage.verifyHomePage();
+    }
+
+    @Then("Enter invalid username and password")
+    public void enterInvalidUsernameAndPassword() {
+        loginPage.fillLoginMask("admin", "incorrect");
+    }
+
+    @Then("Verify error message")
+    public void verifyErrorMessage() {
+        loginPage.verifyErrorMessage();
+
     }
 }
