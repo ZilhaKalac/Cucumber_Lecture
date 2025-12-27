@@ -34,19 +34,23 @@ public class LoginSteps {
         loginPage.clickLoginBtn();
     }
 
-    @Then("Home page opened")
-    public void homePageOpened() {
+    @Then("Verify Home page opened")
+    public void verify_homePage_Opened() {
         homePage.verifyHomePage();
     }
 
     @Then("Enter invalid username and password")
-    public void enterInvalidUsernameAndPassword() {
-        loginPage.fillLoginMask("admin", "incorrect");
+    public void enter_invalid_username_and_password() {
+       loginPage.fillLoginMask("admin", "incorrect password");
     }
 
     @Then("Verify error message")
-    public void verifyErrorMessage() {
-        loginPage.verifyErrorMessage();
+    public void verify_error_message() {
+     loginPage.verifyErrorMessage();
+    }
 
+    @Then("Enter username {string} and password {string}")
+    public void enterUsernameAndPassword(String username, String password) {
+     loginPage.fillLoginMask(username,password);
     }
 }
