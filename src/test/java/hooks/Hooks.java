@@ -12,6 +12,7 @@ public class Hooks {
 
     public static WebDriver driver;
     public  Logger LOGGER = LogManager.getLogger(this.getClass());
+
     @Before
     public void setp(){
         driver = BaseDriver.getdriver();

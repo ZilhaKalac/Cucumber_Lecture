@@ -1,9 +1,11 @@
 package stepDefinitions;
 
 
+import hooks.Hooks;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import io.cucumber.messages.types.Hook;
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import pages.LoginPage;
@@ -16,7 +18,7 @@ public class LoginSteps {
 
     @When("Navigate to the web page")
     public void navigateToTheWebPage() {
-        driver = BaseDriver.getdriver()
+        driver = Hooks.driver;
         homePage = new HomePage(driver);
         loginPage = new LoginPage(driver);
     }
@@ -28,11 +30,11 @@ public class LoginSteps {
 
     @Then("Click login button")
     public void clickLoginButton() {
-       loginPage.clickLoginBtn();
+        loginPage.clickLoginBtn();
     }
 
     @Then("Home page opened")
     public void homePageOpened() {
-      homePage.verifyHomePage();
+        homePage.verifyHomePage();
     }
 }
