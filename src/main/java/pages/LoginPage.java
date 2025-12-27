@@ -4,10 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
     @FindBy(css = "input[id='username']")
     private WebElement emailInput;
+
+    @FindBy(css = "button[class^='-esm-login']")
+    private WebElement continueBtn;
 
     @FindBy(css = "input[id='password']")
     private WebElement passwordInput;
@@ -16,14 +19,16 @@ public class LoginPage extends BasePage{
     private WebElement loginButton;
 
 
-    public void fillLoginMask(final String username, final String password){
+    public void fillLoginMask(final String username, final String password) {
         sendKeysToElement(emailInput, username);
+        clickElement(continueBtn);
         sendKeysToElement(passwordInput, password);
     }
 
-    public void clickLoginBtn(){
+    public void clickLoginBtn() {
         clickElement(loginButton);
     }
+
     public LoginPage(WebDriver driver) {
         super(driver);
     }

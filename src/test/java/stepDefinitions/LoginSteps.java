@@ -1,32 +1,38 @@
 package stepDefinitions;
 
-import io.cucumber.java.PendingException;
+
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.WebDriver;
+import pages.HomePage;
+import pages.LoginPage;
+import utility.BaseDriver;
 
 public class LoginSteps {
+    WebDriver driver;
+    HomePage homePage;
+    LoginPage loginPage;
+
     @When("Navigate to the web page")
     public void navigateToTheWebPage() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        driver = BaseDriver.getdriver()
+        homePage = new HomePage(driver);
+        loginPage = new LoginPage(driver);
     }
 
     @Then("Enter username and password")
     public void enterUsernameAndPassword() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        loginPage.fillLoginMask("admin", "Admin123");
     }
 
-    @And("Click login button")
+    @Then("Click login button")
     public void clickLoginButton() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+       loginPage.clickLoginBtn();
     }
 
     @Then("Home page opened")
     public void homePageOpened() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+      homePage.verifyHomePage();
     }
 }
