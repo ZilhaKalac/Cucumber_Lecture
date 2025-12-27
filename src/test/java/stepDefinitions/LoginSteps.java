@@ -53,4 +53,13 @@ public class LoginSteps {
     public void enterUsernameAndPassword(String username, String password) {
      loginPage.fillLoginMask(username,password);
     }
+
+    @Then("Verify result {string}")
+    public void verifyResult(String result) {
+    if(result.equals("home page")) {
+        verify_homePage_Opened();
+    } else {
+        verify_error_message();
+    }
+    }
 }
