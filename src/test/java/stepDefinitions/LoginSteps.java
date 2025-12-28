@@ -2,15 +2,14 @@ package stepDefinitions;
 
 
 import hooks.Hooks;
-import io.cucumber.java.PendingException;
-import io.cucumber.java.en.And;
+
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import io.cucumber.messages.types.Hook;
+
 import org.openqa.selenium.WebDriver;
 import pages.HomePage;
 import pages.LoginPage;
-import utility.BaseDriver;
+
 
 public class LoginSteps {
     WebDriver driver;
