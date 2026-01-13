@@ -29,6 +29,7 @@ public class BasePage {
 
     public void clickElement(final WebElement element) {
         wait.until(ExpectedConditions.elementToBeClickable(element));
+        wait.until(ExpectedConditions.visibilityOf(element));
         try {
             element.click();
             LOGGER.debug("Element clicked");

@@ -21,6 +21,9 @@ public class CreatePatientPage extends BasePage {
     @FindBy(xpath = "(//button[@class='cds--content-switcher-btn'])[2]")
     private WebElement birthdayNoBtn;
 
+    @FindBy(css = "div[id='birthdate']")
+    private WebElement birthdayInput;
+
     @FindBy(css = "input[id='monthsEstimated']")
     private WebElement ageInMonthInput;
 
